@@ -3,7 +3,7 @@ import { modules } from '../data/modules';
 import ModuleCard from './ModuleCard';
 import ModuleModal from './ModuleModal';
 import { Module } from '../types';
-import { GraduationCap, Target, TrendingUp } from 'lucide-react';
+import { GraduationCap, Target, TrendingUp, Info, Play, Copy } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const [selectedModule, setSelectedModule] = useState<Module | null>(null);
@@ -42,7 +42,57 @@ const Dashboard: React.FC = () => {
             Para Aprender e Dominar o Inglês
           </p>
         </div>
-          
+
+        {/* Instructions Box */}
+        <div className="mb-12 animate-slide-up">
+          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl rounded-2xl border border-blue-500/30 p-6 max-w-4xl mx-auto">
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                <Info className="w-5 h-5 text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-white">Bem-vindo à sua jornada no inglês!</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-blue-200 mb-4 leading-relaxed">
+                  Você agora tem acesso a <strong className="text-white">500 prompts exclusivos</strong> organizados em 10 módulos temáticos para dominar o inglês com o ChatGPT.
+                </p>
+                <p className="text-blue-200 mb-4 leading-relaxed">
+                  Cada módulo contém prompts cuidadosamente elaborados para diferentes níveis de aprendizado.
+                </p>
+              </div>
+              
+              <div className="space-y-3">
+                <h3 className="text-white font-semibold mb-3 flex items-center">
+                  <Play className="w-4 h-4 mr-2 text-blue-400" />
+                  Como usar:
+                </h3>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-start space-x-2">
+                    <span className="w-6 h-6 bg-blue-500/30 rounded-full flex items-center justify-center text-blue-300 text-xs font-bold mt-0.5">1</span>
+                    <p className="text-blue-200">Clique em qualquer módulo para ver os prompts</p>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <span className="w-6 h-6 bg-blue-500/30 rounded-full flex items-center justify-center text-blue-300 text-xs font-bold mt-0.5">2</span>
+                    <p className="text-blue-200">Use o botão <Copy className="w-3 h-3 inline mx-1" /> para copiar qualquer prompt</p>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <span className="w-6 h-6 bg-blue-500/30 rounded-full flex items-center justify-center text-blue-300 text-xs font-bold mt-0.5">3</span>
+                    <p className="text-blue-200">Cole no ChatGPT e comece a praticar!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
+              <p className="text-blue-200 text-sm">
+                💡 <strong className="text-white">Dica:</strong> Comece pelo módulo que mais se adequa ao seu nível atual e explore os prompts gradualmente. Cada prompt foi desenvolvido para maximizar seu aprendizado!
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((module, index) => (
