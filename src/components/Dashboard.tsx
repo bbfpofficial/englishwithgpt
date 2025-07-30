@@ -10,10 +10,6 @@ const Dashboard: React.FC = () => {
   const [moduleProgress, setModuleProgress] = useState<Record<number, number>>(
     modules.reduce((acc, module) => ({ ...acc, [module.id]: module.progress }), {})
   );
-
-  const totalModules = modules.length;
-
-  const handleModuleClick = (module: Module) => {
     setSelectedModule(module);
   };
 
