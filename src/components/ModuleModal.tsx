@@ -9,7 +9,7 @@ interface ModuleModalProps {
   onProgressUpdate: (moduleId: number, progress: number) => void;
 }
 
-const ModuleModal: React.FC<ModuleModalProps> = ({ module, onClose, onProgressUpdate }) => {
+const ModuleModal: React.FC<ModuleModalProps> = ({ module, onClose, onProgressUpdate: _onProgressUpdate }) => {
   const [showPrompts, setShowPrompts] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
   const prompts = modulePrompts[module.id] || [];

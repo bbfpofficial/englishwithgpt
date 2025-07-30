@@ -12,8 +12,8 @@ const Dashboard: React.FC = () => {
   );
 
   const totalModules = modules.length;
-  const completedModules = Object.values(moduleProgress).filter(progress => progress === 100).length;
-  const overallProgress = Math.round((Object.values(moduleProgress).reduce((sum, progress) => sum + progress, 0) / totalModules));
+  const _completedModules = Object.values(moduleProgress).filter(progress => progress === 100).length;
+  const _overallProgress = Math.round((Object.values(moduleProgress).reduce((sum, progress) => sum + progress, 0) / totalModules));
 
   const handleModuleClick = (module: Module) => {
     setSelectedModule(module);
