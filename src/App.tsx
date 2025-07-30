@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
@@ -6,10 +6,6 @@ import Header from './components/Header';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLogin = (email: string, password: string) => {
-    setIsAuthenticated(true);
-  };
 
   const handleDirectLogin = () => {
     setIsAuthenticated(true);
