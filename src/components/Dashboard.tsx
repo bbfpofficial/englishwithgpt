@@ -3,7 +3,7 @@ import { modules } from '../data/modules';
 import ModuleCard from './ModuleCard';
 import ModuleModal from './ModuleModal';
 import { Module } from '../types';
-import { GraduationCap, Target, TrendingUp, Info, Play, Copy } from 'lucide-react';
+import { Info, Play, Copy } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const [selectedModule, setSelectedModule] = useState<Module | null>(null);
