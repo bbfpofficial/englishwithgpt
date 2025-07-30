@@ -3,13 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
   * {
     @apply border-gray-200;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
     @apply bg-gray-50 text-gray-900 font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -28,6 +37,21 @@
   
   .input-field {
     @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+  
+  .mobile-card {
+    @apply bg-white/10 backdrop-blur-xl rounded-xl border border-white/20 transition-all duration-300;
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .mobile-button {
+    @apply font-semibold py-4 px-6 rounded-xl transition-all duration-200 active:scale-95;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -91,4 +115,29 @@
 
 .animate-scale-in {
   animation: scaleIn 0.2s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .mobile-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .mobile-padding {
+    padding: 1rem;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+/* PWA styles */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
