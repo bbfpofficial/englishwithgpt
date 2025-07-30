@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: (email: string, password: string) => boolean;
+  login: (password: string) => boolean;
   logout: () => void;
 }
 
@@ -23,7 +23,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const login = (email: string, password: string): boolean => {
+  const login = (password: string): boolean => {
     // Simple authentication - password is "acesso123"
     if (password === 'acesso123') {
       setIsAuthenticated(true);
