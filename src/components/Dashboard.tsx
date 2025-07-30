@@ -50,7 +50,7 @@ const Dashboard: React.FC = () => {
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
                 <Info className="w-5 h-5 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-white">Bem-vindo à sua jornada no inglês!</h2>
+              <h2 className="text-2xl font-bold text-white">Como usar a plataforma</h2>
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
