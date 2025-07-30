@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { BookOpen, ArrowRight } from 'lucide-react';
 
 interface LoginFormProps {
-  onLogin: (email: string, password: string) => boolean;
+  onLogin: () => void;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     setIsLoading(true);
 
     // Simulate loading
     await new Promise(resolve => setTimeout(resolve, 800));
 
-    const success = onLogin(email, password);
-    
-    if (!success) {
-      setError('Senha incorreta. Use: acesso123');
-    }
+    onLogin();
     
     setIsLoading(false);
   };
@@ -37,6 +28,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8 animate-fade-in">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <BookOpen className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-2xl font-bold text-white mb-2">
               500 Prompts ChatGPT
@@ -46,67 +38,41 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-4">
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300 w-5 h-5" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Seu email"
-                  className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  required
-                />
-              </div>
-
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-300 w-5 h-5" />
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Senha: acesso123"
-                  className="w-full pl-12 pr-12 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-300 hover:text-white transition-colors"
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
+          <div className="mb-8 text-center">
+            <h2 className="text-xl font-semibold text-white mb-4">
+              Bem-vindo à sua jornada no inglês! 🚀
+            </h2>
+            <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-left">
+              <p className="text-blue-200 mb-4 leading-relaxed">
+                Você está prestes a acessar uma coleção exclusiva de <strong className="text-white">500 prompts</strong> cuidadosamente desenvolvidos para transformar sua experiência de aprendizado do inglês com o ChatGPT.
+              </p>
+              <p className="text-blue-200 mb-4 leading-relaxed">
+                Nossos prompts estão organizados em <strong className="text-white">10 módulos temáticos</strong>, cada um focado em uma área específica do idioma, desde vocabulário básico até preparação para exames de proficiência.
+              </p>
+              <p className="text-blue-200 leading-relaxed">
+                Prepare-se para uma experiência de aprendizado <strong className="text-white">personalizada, eficiente e divertida!</strong>
+              </p>
             </div>
-
-            {error && (
-              <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-3 text-red-200 text-sm animate-slide-up">
-                {error}
-              </div>
-            )}
-
+          </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
             >
               {isLoading ? (
-                <div className="flex items-center justify-center">
+                <>
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
-                  Entrando...
-                </div>
+                  <span>Entrando...</span>
+                </>
               ) : (
-                'Acessar Área de Membros'
+                <>
+                  <span>Acessar Área de Membros</span>
+                  <ArrowRight className="w-5 h-5" />
+                </>
               )}
             </button>
           </form>
-
-          <div className="mt-6 text-center">
-            <p className="text-blue-200 text-xs">
-              Use a senha: <span className="font-semibold text-white">acesso123</span>
-            </p>
-          </div>
         </div>
       </div>
     </div>

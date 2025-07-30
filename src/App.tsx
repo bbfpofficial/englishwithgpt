@@ -8,12 +8,11 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = (email: string, password: string) => {
-    // Simple authentication - password is "acesso123"
-    if (password === 'acesso123') {
-      setIsAuthenticated(true);
-      return true;
-    }
-    return false;
+    setIsAuthenticated(true);
+  };
+
+  const handleDirectLogin = () => {
+    setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
@@ -29,7 +28,7 @@ function App() {
             <Dashboard />
           </>
         ) : (
-          <LoginForm onLogin={handleLogin} />
+          <LoginForm onLogin={handleDirectLogin} />
         )}
       </div>
     </AuthProvider>
