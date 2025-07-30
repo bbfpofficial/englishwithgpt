@@ -40,7 +40,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
           <div className="mb-8 text-center">
             <h2 className="text-xl font-semibold text-white mb-4">
-              Bem-vindo à sua jornada no inglês! 🚀
+              Bem-vindo(a) à jornada da fluência! 🚀
             </h2>
             <div className="bg-white/5 rounded-lg p-6 border border-white/10 text-left">
               <p className="text-blue-200 mb-4 leading-relaxed">
